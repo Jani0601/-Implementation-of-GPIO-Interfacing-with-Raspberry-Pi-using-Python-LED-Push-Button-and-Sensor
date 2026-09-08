@@ -121,59 +121,25 @@ To interface an LED, push button, and digital sensor with the GPIO pins of a Ras
 ---
 
 # Program
-
-```python
-from machine import Pin
-import time
-
-# GPIO pin configuration
-LED_PIN = 15
-BUTTON_PIN = 14
-SENSOR_PIN = 13
-
-# Configure GPIO pins
-led = Pin(LED_PIN, Pin.OUT)
-button = Pin(BUTTON_PIN, Pin.IN, Pin.PULL_UP)
-sensor = Pin(SENSOR_PIN, Pin.IN)
-
-print("Raspberry Pi Pico GPIO Interface Started")
-print("LED: GP15 | Button: GP14 | Sensor: GP13")
-
-try:
-    while True:
-
-        # Read push button and sensor
-        button_state = button.value()
-        sensor_state = sensor.value()
-
-        # Display input states
-        print("Button =", button_state,
-              "| Sensor =", sensor_state)
-
-        # Control LED
-        if button_state == 0 or sensor_state == 1:
-            led.value(1)
-            print("LED = ON")
-        else:
-            led.value(0)
-            print("LED = OFF")
-
-        time.sleep(0.5)
-
-except KeyboardInterrupt:
-    led.value(0)
-    print("Program stopped")
 ```
+from machine import Pin
+from utime import sleep
 
-> **Note:** The program uses MicroPython and the `machine.Pin` class for GPIO interfacing. The push button uses an internal pull-up resistor, so its state is **LOW (0) when pressed**. The sensor is assumed to provide a digital output, where **HIGH (1) indicates detection**.
+sleep(0.01)  # Wait for USB to connect
+print("Hello, Pi Pico!")
 
----
+led = Pin(5, Pin.OUT)
 
+while True:
+    led.toggle()
+    sleep(0.5)
+```
 # Observation
 
+<img width="1906" height="871" alt="image" src="https://github.com/user-attachments/assets/c3edfe91-d9df-425b-b539-1b2d3959c5ac" />
 
 
----
+
 
 # Result
 
