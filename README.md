@@ -24,7 +24,8 @@ To interface an LED, push button, and digital sensor with the GPIO pins of a Ras
 
 ---
 
-**To upload Wokwi circuit diagram**
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/57082b36-7da7-4308-a0f5-63bd17287491" />
+
 
 ---
 
